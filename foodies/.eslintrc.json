@@ -1,0 +1,33 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node":true
+    },
+    "extends": [
+        "airbnb",
+        "plugin:node/recommended",
+        "prettier"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        "no-unused-vars":"warn",
+        "no-console":"off",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "func-names":"off",
+        "class-methods-use-this":"off" 
+    }
+}
