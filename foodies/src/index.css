@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Clarika bold";
+  src: url("./fonts/clarika-geo-bold.otf");
+}
+
+@font-face {
+  font-family: "Druk Text Wide";
+  src: url("./fonts/druk-text-wide-web-medium-regular.ttf");
+}
+
+.custom-img {
+  background-image: url("./assets/mask_hero.svg");
+}
+
+.bg-text {
+  background-image: url("./assets/bg_text.svg");
+}
