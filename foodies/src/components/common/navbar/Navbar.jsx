@@ -1,69 +1,86 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FoodiesLogo from "../../../assets/foodies.svg";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const [color, setColor] = useState('transparent')
 
   const handleNav = () => {
     setNav(!nav);
   };
 
+  useEffect(() => {
+    const changeColor = () => {
+        if(window.scrollY >= 90) {
+            setColor('white')
+        } else {
+            setColor('transparent')
+        }
+    }
+    window.addEventListener('scroll', changeColor)
+}, []);
+
   return (
-    <div  className='lg:pl-[101px] lg:pt-[57px] md:pl-[40px] md:pt-[30px] pl-[16px] pt-[47px] w-full ease-in duration-300'>
-        <div className='flex md:justify-start justify-between items-center  '>
-            <a href='/'>
-                <img src={FoodiesLogo} alt='foodies logo' className=" z-50" />
-            </a>
-            <ul className='hidden sm:flex font-syne font-bold'>
-                <li className='p-4'>
-                    <a href='/'>Acerca de</a>
-                </li>
-                <li  className='p-4'>
-                    <a href='/'>Restaurantes</a>
-                </li>
-                <li  className='p-4'>
-                    <a href='/'>Menú</a>
-                </li>
-                <li  className='p-4'>
-                    <a href='/'>Contáctanos</a>
-                </li>
-            </ul>
+    <div style={{backgroundColor: `${color}`}} className="fixed left-0 top-0 w-full z-20 ease-in duration-300">
+      <div className="flex items-center lg:justify-start justify-between pb-2 lg:pl-28 lg:pt-14 md:pl-10 md:pt-8 pl-4 pt-12 md:pr-11 pr-5">
+        <a href="/">
+          <img src={FoodiesLogo}  className="w-min-fit"/>
+        </a>
+        <ul className="lg:flex  hidden font-syne font-bold">
+          <li className="pl-20">
+            <a href="/" className=" hover:text-lime-900 hover:underline">Acerca de</a>
+          </li>
+          <li className="pl-10">
+            <a href="/" className=" hover:text-lime-900 hover:underline">Restaurantes</a>
+          </li>
+          <li className="pl-10">
+            <a href="/" className=" hover:text-lime-900 hover:underline">Menú</a>
+          </li>
+          <li className="pl-10">
+            <a href="/" className=" hover:text-lime-900 hover:underline">Contáctanos</a>
+          </li>
+        </ul>
 
-            {/* Mobile Button */}
-            <div onClick={handleNav} className='sm:block sm:hidden z-10 pr-[16px]'>
-                {nav ? <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.266 5.73405C20.6891 6.15712 20.6891 6.84305 20.266 7.26611L7.26603 20.2661C6.84296 20.6892 6.15703 20.6892 5.73397 20.2661C5.3109 19.843 5.3109 19.1571 5.73397 18.734L18.734 5.73405C19.157 5.31098 19.843 5.31098 20.266 5.73405Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.73397 5.73405C6.15703 5.31098 6.84296 5.31098 7.26603 5.73405L20.266 18.734C20.6891 19.1571 20.6891 19.843 20.266 20.2661C19.843 20.6892 19.157 20.6892 18.734 20.2661L5.73397 7.26611C5.3109 6.84305 5.3109 6.15712 5.73397 5.73405Z" fill="black"/>
-                </svg> : <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.25 13H22.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3.25 6.5H22.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3.25 19.5H22.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                 }
-            </div>
-
-            {/* Mobile Menu */}
-            <div className={nav ? 'sm:hidden absolute top-0 left-0 right-0 flex font-syne font-bold justify-start items-center w-full h-3/4 bg-white rounded-b-[30px] shadow-2xl text-left ease-in duration-300 ' : 'sm:hidden absolute top-[-200%] left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-center ease-in duration-300'}>
-         
-                  <ul>
-                    <li>
-                      <a href='/'>
-                      <img src={FoodiesLogo} alt='foodies logo' className=" absolute top-[47px] left-[16px]" />
-                      </a>
-                    </li>
-                    <li onClick={handleNav} className='pl-[16px] pb-[50px] text-4xl hover:text-gray-500'>
-                        <a href='/'>Acerca de</a>
-                    </li>
-                    <li onClick={handleNav} className='pl-[16px] pb-[50px] text-4xl hover:text-gray-500'>
-                        <a href='/'>Restaurantes</a>
-                    </li>
-                    <li onClick={handleNav} className='pl-[16px] text-4xl hover:text-gray-500'>
-                        <a href='/'>Contáctanos</a>
-                    </li>
-                    
-                </ul>
-            </div>
+        {/* Mobile Button */}
+        <div onClick={handleNav} className="lg:block lg:hidden  z-10">
+          {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={
+            nav
+              ? "lg:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-center ease-in duration-500"
+              : "lg:hidden absolute top-0 left-[200%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-center ease-in duration-500"
+          }
+        >
+          <a href="/" className=" absolute top-12 left-4">
+            <img src={FoodiesLogo}  className="w-min-fit"/>
+          </a>
+          <ul className="absolute top-36 left-4 font-syne font-bold text-left text-2xl">
+          
+            <li
+              onClick={handleNav}
+              className="  hover:text-gray-500"
+            >
+              <a href="/">Acerca de</a>
+            </li>
+            <li
+              onClick={handleNav}
+              className=" py-12 hover:text-gray-500"
+            >
+              <a href="/#aboutme">Restaurantes</a>
+            </li>
+            <li
+              onClick={handleNav}
+              className=" hover:text-gray-500"
+            >
+              <a href="/#work">Contáctenos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
