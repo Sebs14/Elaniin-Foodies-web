@@ -3,11 +3,13 @@ import Navbar from "./components/common/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import WhoIsF from "./components/whoisf/WhoIsF";
 
+
+
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <div className="page">
       <Navbar />
       <Hero />
       <WhoIsF />
