@@ -6,6 +6,7 @@ const Titles = ({ titleText, classes, ids }) => {
    const text = new SplitType("#target");
    const textB = new SplitType("#targetB");
    const textC = new SplitType("#targetC");
+   const textD = new SplitType("#targetD");
    const characters = document.querySelectorAll(".char");
 
    for (let i = 0; i < characters.length; i++) {
