@@ -7,8 +7,8 @@ const WhoIsF = () => {
     <div className=" lg:flex justify-center ">
       <div className="bg-whois bg-no-repeat bg-cover lg:h-[565px] lg:w-[60%] h-[565px] w-full lg:text-5xl text-4xl">
         <div className="lg:pt-[404px] lg:pr-[40px] md:pt-[445px] md:pr-[53px] pt-[430px] px-4 flex flex-col">
-         <Titles ids="targetB"  titleText={"LA COMIDA ES"} classes=" font-drukTextWide text-white text-right "/>
-         <Titles ids="targetC"  titleText={"NUESTRO ARTE"} classes="font-drukTextWide text-[#FFD600] text-right"/>
+         <Titles ids="targetB"  titleText={"LA COMIDA ES"} classes="text text--zipping font-drukTextWide text-white text-right "/>
+         <Titles ids="targetC"  titleText={"NUESTRO ARTE"} classes="text text--zipping font-drukTextWide text-[#FFD600] text-right"/>
         </div>
       </div>
       <div className=" flex flex-col  lg:w-[40%] md:h-[565px] w-full bg-flow bg-no-repeat bg-center bg-cover">
