@@ -3,6 +3,7 @@ import Navbar from "../common/navbar/Navbar";
 import Hero from "../hero/Hero";
 import WhoIsF from "../whoisf/WhoIsF";
 import Addresses from "../addresses/Addresses";
+import Carousel from '../carousel/Carousel';
 
 const Main = () => {
   return (
@@ -11,6 +12,7 @@ const Main = () => {
         <Hero/>
         <WhoIsF/>
         <Addresses/>
+        <Carousel />
     </div>
   )
 }

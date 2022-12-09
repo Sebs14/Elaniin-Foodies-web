@@ -51,7 +51,7 @@ const Addresses = () => {
   return (
     <div className=' lg:flex pt-10 '>
       <div className='lg:w-3/4'>
-        <Titles ids="targetD" titleText={"Estamos para ti"} classes=" text text--zipping font-drukTextWide font-bold md:text-5xl text-3xl md:w-full pl-4 w-1/2 pt-6" />
+        <Titles ids="targetD" titleText={"Estamos para ti"} classes=" text text--zipping font-drukTextWide font-bold md:text-5xl text-3xl md:w-full pl-4 w-3/4 pt-6" />
         <div className='flex pt-10'>
           <button className='flex justify-center items-center w-1/2 text-black border border-gray-300 py-4 ' onClick={changeColor} style={{background:`${color}`, color:`${colorText}`}} >
             <IoFastFoodOutline size={"30px"}/>

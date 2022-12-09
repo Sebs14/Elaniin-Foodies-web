@@ -7,13 +7,13 @@ import Titles from "../common/titles/Titles";
 
 const Hero = () => {
   return (
-    <div className="flex lg:pl-[102px] lg:pt-[267px] md:pl-[53px] md:pt-[184px] pt-[431px] pl-5 pr-3 h-screen">
+    <div className="flex lg:pl-[102px] lg:pt-[267px] md:pl-[53px] md:pt-[184px] pt-[375px] pl-5 pr-3 h-screen">
       <div className=" absolute top-0 right-0 z-0 lg:p-0">
         <img src={Customimg} alt="background hero hamburger" className=" lg:h-full md:h-[500px]"></img>
       </div>
-      <div className="flex flex-col z-10 pt-10 lg:pr-0 md:pr-20">
-        <div className=" inline bg-text bg-no-repeat bg-left-bottom bg-origin-padding  md:pl-4 md:pb-2 lg:w-full p-4  " >
-          <Titles ids="target" titleText={"Un nuevo sabor esta en la ciudad"}  classes=" text text--zipping font-drukTextWide lg:text-6xl md:text-5xl text-4xl justfy-center lg:w-5/12 md:w-8/12 w-11/12"/>
+      <div className="flex flex-col z-10 lg:pr-0 md:pr-20">
+        <div className=" inline bg-text bg-no-repeat bg-left-bottom bg-origin-padding  md:pl-4 md:pb-2 lg:w-full  " >
+          <Titles ids="target" titleText={"Un nuevo sabor esta en la ciudad"}  classes=" text text--zipping font-drukTextWide lg:text-6xl md:text-5xl text-4xl md:text-left text-center justify-center  lg:w-5/12 md:w-8/12 w-11/12"/>
         </div>
         <p className=" text-black/40 font-noto text-lg md:w-7/12 pl-4 pt-5">
           Estamos a punto de descubrir un mundo lleno de sabores

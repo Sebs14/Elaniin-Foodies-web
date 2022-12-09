@@ -6,24 +6,17 @@ import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 
-const Titles = ({ titleText, classes}) => {
+const Paragraph = ({ pText, classes, ids }) => {
 
-
-  useEffect(() =>{
-    ScrollOut({
-      targets: '.word',
-      once: true
-    });
-    Splitting();
-  }, [])
   
   return (
     <div>
       <h1 className={classes} data-scroll="out" data-splitting="">
-        {titleText}
+        {pText}
       </h1>
     </div>
   );
 };
 
-export default Titles;
+
+export default Paragraph
