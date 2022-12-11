@@ -7,7 +7,7 @@ import Titles from "../common/titles/Titles";
 
 const Hero = () => {
   return (
-    <div className="flex lg:pl-[102px] lg:pt-[267px] md:pl-[53px] md:pt-[184px] pt-[375px] pl-5 pr-3 h-screen">
+    <div className="flex lg:pl-[102px] lg:pt-[267px] md:pl-[53px] md:pt-[184px] pt-[375px] pl-5 pr-3 lg:h-screen md:h-[60vh] h-screen">
       <div className=" absolute top-0 right-0 z-0 lg:p-0">
         <img src={Customimg} alt="background hero hamburger" className=" lg:h-full md:h-[500px]"></img>
       </div>

@@ -4,6 +4,7 @@ import Hero from "../hero/Hero";
 import WhoIsF from "../whoisf/WhoIsF";
 import Addresses from "../addresses/Addresses";
 import Carousel from '../carousel/Carousel';
+import Experience from "../experience/Experience"
 
 const Main = () => {
   return (
@@ -13,6 +14,7 @@ const Main = () => {
         <WhoIsF/>
         <Addresses/>
         <Carousel />
+        <Experience/>
     </div>
   )
 }
