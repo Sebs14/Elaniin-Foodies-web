@@ -43,7 +43,7 @@ const Addresses = () => {
     const addresses = await Address(type, input)
     setAddress(addresses)
   }
-
+  
   useEffect(()=> {
     fetchAddresses()
   },[type])
@@ -82,7 +82,7 @@ const Addresses = () => {
               <AddresBox key={address.id} place={address.title} time={address.description}/>
             ))
           ) : ('no hay direcciones')
-
+            
           }
         </div>
       </div>
