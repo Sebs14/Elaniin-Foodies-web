@@ -10,7 +10,7 @@ const mail = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_115_17)">
+        <g clipPath="url(#clip0_115_17)">
           <path
             d="M25.0513 81.5438L0 53.3018L74.9535 0L149.907 53.3018L124.455 81.5438H25.0513Z"
             fill="#FFD600"
@@ -80,9 +80,9 @@ const mail = () => {
             y2="41"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#B79A00" stop-opacity="0.4" />
-            <stop offset="0.55135" stop-color="#272100" stop-opacity="0.09" />
-            <stop offset="1" stop-color="#4F4200" stop-opacity="0.02" />
+            <stop stopColor="#B79A00" stopOpacity="0.4" />
+            <stop offset="0.55135" stopColor="#272100" stopOpacity="0.09" />
+            <stop offset="1" stopColor="#4F4200" stopOpacity="0.02" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_115_17"
