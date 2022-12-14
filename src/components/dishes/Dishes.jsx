@@ -58,9 +58,9 @@ const Dishes = () => {
   },[selectedCategory])
   
   return (
-    <div className='h-full'>
-        <div className='flex justify-center'>
-          <form className="lg:px-8 lg:w-1/4 md:px-40 md:w-full md:block   pl-4 py-6 w-11/12 ">
+    <div className='h-full flex flex-col justify-center items-center'>
+        <div className='flex lg:flex-row md:flex-col justify-center'>
+          <form className="lg:px-8  md:px-40  md:block md:w-full pl-4 py-6 w-11/12 ">
             <label
               htmlFor="default-search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -90,7 +90,7 @@ const Dishes = () => {
           </form>
           <Filters key={categories.id} setSelectedCategory={setSelectedCategory} categories={categories} />
         </div>
-        <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1 px-4 space-x-2 pt-24 pl-32'>
+        <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1 pt-24 '>
           {dish != null ? (
             dish.map( dish => (
               <DishCard key={dish.id} price={dish.price} dish={dish.title} image={dish.image} description={dish.description}  />
