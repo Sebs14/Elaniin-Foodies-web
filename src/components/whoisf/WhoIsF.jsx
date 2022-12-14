@@ -4,7 +4,7 @@ import Titles from "../common/titles/Titles";
 
 const WhoIsF = () => {
   return (
-    <div className=" lg:flex justify-center ">
+    <div id="whois" className=" lg:flex justify-center ">
       <div className="bg-whois bg-no-repeat bg-cover lg:h-[565px] lg:w-[60%] h-[565px] w-full lg:text-5xl text-4xl">
         <div className="lg:pt-[404px] lg:pr-10 md:pt-[445px] md:pr-[53px] pt-[430px] px-2 flex flex-col">
          <Titles titleText={"LA COMIDA ES"} classes="text text--zipping font-drukTextWide text-white text-right  "/>

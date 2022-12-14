@@ -24,7 +24,7 @@ const Experience = () => {
   };
 
   return (
-    <div className="bg-black h-screen  justify-center ">
+    <div id="contact" className="bg-black h-screen  justify-center ">
       {isValid ? (
         <Thanks />
       ) : (

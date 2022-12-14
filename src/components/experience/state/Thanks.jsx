@@ -13,7 +13,9 @@ const Thanks = () => {
         <Titles classes="font-drukTextWide text-4xl text-white text-center pt-5" titleText="Gracias por tus comentarios"/>
         <Paragraph classes="font-noto text-center text-white text-lg pt-5" pText="No te pierdas nuestras grandes ofertas y recibe notificaciones de todos nuestros restaurantes top via e-mail."/>
         <div className='pt-8'>
-          <Buttons text="Conoce nuestro menu"/>
+          <a href='/menu'>
+            <Buttons text="Conoce nuestro menu"/>
+          </a>
         </div>
     </div>
   )

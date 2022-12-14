@@ -46,7 +46,7 @@ const Carousel = () => {
   }
 
   return (
-    <div className="flex-col max-w-full px-4 py-16 relative flex justify-center items-center lg:h-[75vh] h-[65vh]  ">
+    <div id="carousel" className="flex-col max-w-full px-4 py-16 relative flex justify-center items-center lg:h-[75vh] h-[65vh]  ">
       
       <LeftSide/>
       <RightSide/>

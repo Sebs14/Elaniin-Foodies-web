@@ -49,7 +49,7 @@ const Addresses = () => {
   },[type])
 
   return (
-    <div className=' lg:flex pt-10 '>
+    <div id='address' className=' lg:flex pt-10 '>
       <div className='lg:w-3/4'>
         <Titles ids="targetD" titleText={"Estamos para ti"} classes=" text text--zipping font-drukTextWide font-bold md:text-5xl text-3xl md:w-full pl-4 w-3/4 pt-6" />
         <div className='flex pt-10'>

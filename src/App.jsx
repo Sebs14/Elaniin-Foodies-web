@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Main from "./components/main/Main";
-
+import Landing from "./components/pages/Landing";
+import Menu from "./components/pages/Menu"
 
 
 function App() {
@@ -9,7 +9,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />}></Route>
+          <Route path="/" element={<Landing />}></Route>
+          <Route path="/Menu" element={<Menu />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
