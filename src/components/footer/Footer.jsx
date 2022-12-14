@@ -26,7 +26,7 @@ const Footer = () => {
         <div className="pt-4 w-full">
             <Line/>
         </div>
-        <div className="flex flex-col space-y-3 pt-5 text-center text-black/50 ">
+        <div className="flex md:flex-row flex-col space-y-3 pt-5 text-center font-bold items-center justify-start md:space-y-0 md:space-x-44 text-black/50 ">
             <a href="/#address" className="hover:text-black">
                 <Paragraph pText="Conoce nuestras sucursales"/>
             </a>
