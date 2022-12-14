@@ -7,7 +7,7 @@ import { BsSearch } from "react-icons/bs";
 import AddresBox from '../common/addresBox/AddresBox';
 import MapImg from '../../assets/map.png';
 import Address from '../../Services/Addresses';
-
+import NoAddress from './state/NoAddress';
 
 
 
@@ -17,7 +17,7 @@ const Addresses = () => {
   const [colorText, setColorText] = useState('white')
   const [colorn, setColorn] = useState('white')
   const [colorTextn, setColorTextn] = useState('black')
-  const [address, setAddress] = useState(null)
+  const [address, setAddress] = useState(1)
   const [type, setType] = useState('takeout')
   const [input, setInput] = useState("")
   
@@ -42,6 +42,7 @@ const Addresses = () => {
     Address(type, input)
     const addresses = await Address(type, input)
     setAddress(addresses)
+    console.log("hol",address)
   }
   
   useEffect(()=> {
@@ -77,11 +78,13 @@ const Addresses = () => {
           </div>
         </form>
         <div className='grid overflow-y-auto h-[405px]'>
-          {address != null ? (
+          {address.length > 0 ? (
             address.map( address => (
               <AddresBox key={address.id} place={address.title} time={address.description}/>
             ))
-          ) : ('no hay direcciones')
+          ) : (
+              <NoAddress />
+            )
             
           }
         </div>

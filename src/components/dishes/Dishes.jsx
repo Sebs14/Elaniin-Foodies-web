@@ -7,6 +7,7 @@ import getMyDish from './../../Services/Dishes';
 import getCategories from '../../Services/getCategory';
 import { useState, useEffect } from 'react';
 import { BsSearch } from "react-icons/bs";
+import NoDishes from './state/NoDishes';
 
 const Dishes = () => {
   const [categories, setCategories] = useState([
@@ -18,7 +19,7 @@ const Dishes = () => {
   ])
   const [selectedCategory, setSelectedCategory] = useState("")
   // const [page, setPage] = useState(1)
-  const [dish, setDish] = useState(null)
+  const [dish, setDish] = useState(1)
   const [input, setInput] = useState("")
 
   
@@ -46,9 +47,10 @@ const Dishes = () => {
   const fetchDishes = async () => {
     const response = await getMyDish(1, selectedCategory, input)
     setDish(response)
+    
    
   }
-  
+  console.log("hola", dish)
   useEffect(() =>{
     fetchCategory()
   },[])
@@ -91,11 +93,15 @@ const Dishes = () => {
           <Filters key={categories.id} setSelectedCategory={setSelectedCategory} categories={categories} />
         </div>
         <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1 pt-24 '>
-          {dish != null ? (
+          {dish.length > 0 ? (
             dish.map( dish => (
               <DishCard key={dish.id} price={dish.price} dish={dish.title} image={dish.image} description={dish.description}  />
             ))
-          ): ('no dish')
+          ): (
+            <div className='flex justify-center items-center w-screen'>
+              <NoDishes />
+            </div>
+          )
 
           }
         </div>
