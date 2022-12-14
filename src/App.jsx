@@ -1,7 +1,8 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Landing from "./components/pages/Landing";
 import Menu from "./components/pages/Menu"
 
+// <Route path="/*" element={<Navigato to="/"/>}/>
 
 function App() {
 
@@ -9,8 +10,10 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          
           <Route path="/" element={<Landing />}></Route>
-          <Route path="/Menu" element={<Menu />}></Route>
+          <Route path="menu" element={<Menu />}></Route>
+          
         </Routes>
       </BrowserRouter>
     </div>

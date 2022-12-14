@@ -4,33 +4,25 @@ import DishCard from '../common/cards/DishCard';
 import Filters from '../common/filters/Filters'
 import Buttons from './../common/buttons/Buttons';
 import getMyDish from './../../Services/Dishes';
+import getCategories from '../../Services/getCategory';
 import { useState, useEffect } from 'react';
+import { BsSearch } from "react-icons/bs";
 
 const Dishes = () => {
-  const [category, setCategory] = useState("")
+  const [categories, setCategories] = useState([
+    {
+      id: '',
+      name: 'Todas',
+      slug: 'todas',
+    },
+  ])
+  const [selectedCategory, setSelectedCategory] = useState("")
   // const [page, setPage] = useState(1)
   const [dish, setDish] = useState(null)
+  const [input, setInput] = useState("")
 
-  const compartirClick = () =>{
-    setCategory("44052953-f490-4986-a8d3-7b832cb26aaf")
-    
-  }
-
-  const recomendadoClick = () =>{
-    setCategory("a70594d0-e5a0-4160-869a-476b6322c804")
-    
-  }
-
-  const tradicionalClick = () =>{
-    setCategory("63b133da-b695-43f9-802b-c846d0bfb7b9")
-    
-  }
-
-  const todasClick = () =>{
-    setCategory(null)
-    
-  }
-  console.log(category)
+  
+  
   // const pageOneClick = () =>{
   //   setPage(1)
   // }
@@ -44,36 +36,71 @@ const Dishes = () => {
   //   setPage(4)
   // }
   
-  // <Filters/ >
-  const fetchDishes = async () => {
-    // setCategory("44052953-f490-4986-a8d3-7b832cb26aaf")
+  const fetchCategory = async () => {
+    const response = await getCategories()
+    setCategories([...categories,...response])
     
-    const response = await getMyDish(1, category)
-    setDish(response)
-
+   
   }
+
+  const fetchDishes = async () => {
+    const response = await getMyDish(1, selectedCategory, input)
+    setDish(response)
+   
+  }
+  
+  useEffect(() =>{
+    fetchCategory()
+  },[])
 
   useEffect(() =>{
     fetchDishes()
-  },[category])
-
+  },[selectedCategory])
+  
   return (
     <div className='h-full'>
-      <Filters tradicional={tradicionalClick} compartir={compartirClick} recomendado={recomendadoClick} todas={todasClick}/>
+        <div className='flex justify-center'>
+          <form className="lg:px-8 lg:w-1/4 md:px-40 md:w-full md:block   pl-4 py-6 w-11/12 ">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
+              Search Dish
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <BsSearch size={"16px"} />
+              </div>
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if(e.key === "Enter"){
+                    e.preventDefault()
+                    fetchDishes()
+                  }
+                } }
+                type="search"
+                id="default-search"
+                className="default-search rounded-lg block w-full p-4 pl-10 text-sm font-noto text-black border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                placeholder="Busca tu platillo favorito..."
+                required
+              />
+            </div>
+          </form>
+          <Filters key={categories.id} setSelectedCategory={setSelectedCategory} categories={categories} />
+        </div>
         <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1 px-4 space-x-2 pt-24 pl-32'>
           {dish != null ? (
             dish.map( dish => (
-              <DishCard price={dish.price} dish={dish.title} image={dish.image} description={dish.description} type={dish.categories.name} />
+              <DishCard key={dish.id} price={dish.price} dish={dish.title} image={dish.image} description={dish.description}  />
             ))
           ): ('no dish')
 
           }
         </div>
-        <div className='flex items-center justify-center space-x-4'>
+        <div className='flex items-center justify-center space-x-4 pt-10'>
           <NumberButton  page="1"/>
-          <NumberButton  page="2"/>   
-          <NumberButton  page="3"/>   
-          <NumberButton  page="4"/>
           <Buttons text="siguiente"/>          
         </div>
     </div>

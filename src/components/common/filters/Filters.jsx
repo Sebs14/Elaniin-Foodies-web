@@ -1,73 +1,32 @@
 import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs";
+
 import { AiOutlineFilter, AiOutlineClose } from "react-icons/ai";
 import Titles from './../titles/Titles';
 import Filter from "../../../assets/filter.svg";
 
-const Filters = ({todas, tradicional, compartir, recomendado}) => {
+const Filters = ({setSelectedCategory , categories, }) => {
   const [nav, setNav] = useState(false);
+  
   const handleNav = () => {
     setNav(!nav);
   };
+  const handleCategoryClick = (e) => {
+    setSelectedCategory(e.target.value) 
+    console.log("hola2", e)
+  }
   return (
     <div className="flex justify-between items-center">
       <div className="flex lg:flex-row md:flex-col w-full justify-center items-center">
-        <form className="lg:px-8 lg:w-1/4 md:px-40 md:w-full md:block   pl-4 py-6 w-11/12 ">
-          <label
-            htmlFor="default-search"
-            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-          >
-            Search Dish
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <BsSearch size={"16px"} />
-            </div>
-            <input
-              type="search"
-              id="default-search"
-              className="default-search rounded-lg block w-full p-4 pl-10 text-sm font-noto text-black border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-              placeholder="Busca tu platillo favorito..."
-              required
-            />
-          </div>
-        </form>
         <div>
         <ul className="md:flex  hidden font-syne text-lg space-x-4 font-bold">
+         {categories.map( category => (
           <li className="lg:pl-10">
-            <button onClick={todas} className=" hover:text-yellow-300 hover:underline ">
-              Todas
+            <button onClick={handleCategoryClick} value={category.id} className=" hover:text-yellow-300 hover:underline ">
+              {category.name}
             </button>
           </li>
-          <li className="lg:pl-10">
-            <button
-              onClick={tradicional}
-              className=" hover:text-yellow-300 hover:underline"
-            >
-              Las tradicionales
-            </button>
-          </li>
-          <li className="lg:pl-10">
-            <a href="/menu" className={" hover:text-yellow-300 hover:underline"}>
-              Menú
-            </a>
-          </li>
-          <li className="lg:pl-10">
-            <button
-              onClick={recomendado}
-              className=" hover:text-yellow-300  hover:underline"
-            >
-              Recomendaciones
-            </button>
-          </li>
-          <li className="lg:pl-10">
-            <button
-              onClick={compartir}
-              className=" hover:text-yellow-300  hover:underline"
-            >
-              Para compartir
-            </button>
-          </li>
+          ))
+        }
         </ul>
         </div>
       </div>

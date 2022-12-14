@@ -9,7 +9,7 @@ const MenuHero = () => {
   return (
     <div className='lg:h-[75vh] md:h-[50vh] h-[75vh] bg-black md:flex md:justify-between'>
         <img src={SmallHamburger} className="lg:static absolute top-0 right-0 md:hidden "/>
-        <div className=' md:static  flex flex-col justify-center  lg:px-24 px-5 lg:pt-0 md:pt-0 pt-96'>
+        <div className=' md:static  flex flex-col justify-center md:w-2/4  lg:px-24 px-5 lg:pt-0 md:pt-0 pt-96'>
             <Titles classes="text-white lg:text-6xl text-4xl font-drukTextWide " titleText="Cada sabor es una nueva"/>
             <Titles classes="text-black lg:text-6xl text-4xl font-drukTextWide bg-text bg-no-repeat bg-left-bottom bg-origin-padding bg-cover max-w-fit" titleText="experiencia"/>
         </div>

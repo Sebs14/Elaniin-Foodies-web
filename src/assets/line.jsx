@@ -4,7 +4,7 @@ const line = () => {
   return (
     <div className="">
       <svg
-        width=""
+        width="100%"
         height="1"
         viewBox="0 0 1397 1"
         fill="none"
