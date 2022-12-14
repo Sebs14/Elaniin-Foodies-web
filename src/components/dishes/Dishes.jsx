@@ -7,26 +7,30 @@ import getMyDish from './../../Services/Dishes';
 import { useState, useEffect } from 'react';
 
 const Dishes = () => {
-  // const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("")
   // const [page, setPage] = useState(1)
   const [dish, setDish] = useState(null)
 
-  // const compartirClick = () =>{
-  //   setCategory("44052953-f490-4986-a8d3-7b832cb26aaf")
-  // }
+  const compartirClick = () =>{
+    setCategory("44052953-f490-4986-a8d3-7b832cb26aaf")
+    
+  }
 
-  // const recomendadoClick = () =>{
-  //   setCategory("a70594d0-e5a0-4160-869a-476b6322c804")
-  // }
+  const recomendadoClick = () =>{
+    setCategory("a70594d0-e5a0-4160-869a-476b6322c804")
+    
+  }
 
-  // const tradicionalClick = () =>{
-  //   setCategory("44052953-f490-4986-a8d3-7b832cb26aaf")
-  // }
+  const tradicionalClick = () =>{
+    setCategory("63b133da-b695-43f9-802b-c846d0bfb7b9")
+    
+  }
 
-  // const todasClick = () =>{
-  //   setCategory("")
-  // }
-
+  const todasClick = () =>{
+    setCategory(null)
+    
+  }
+  console.log(category)
   // const pageOneClick = () =>{
   //   setPage(1)
   // }
@@ -39,21 +43,23 @@ const Dishes = () => {
   // const pageFourClick = () =>{
   //   setPage(4)
   // }
-  // <Filters tradicional={tradicionalClick} compartir={compartirClick} recomendado={recomendadoClick} todas={todasClick}/>
-
+  
+  // <Filters/ >
   const fetchDishes = async () => {
-    const response = await getMyDish()
+    // setCategory("44052953-f490-4986-a8d3-7b832cb26aaf")
+    
+    const response = await getMyDish(1, category)
     setDish(response)
 
   }
 
   useEffect(() =>{
     fetchDishes()
-  },[])
+  },[category])
 
   return (
     <div className='h-full'>
-        <Filters/ >
+      <Filters tradicional={tradicionalClick} compartir={compartirClick} recomendado={recomendadoClick} todas={todasClick}/>
         <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1 px-4 space-x-2 pt-24 pl-32'>
           {dish != null ? (
             dish.map( dish => (
