@@ -9,7 +9,6 @@ module.exports = {
         clarikaBold: "'Clarika bold', bold",
         drukTextWide:"'Druk Text Wide', bold",
         syne:"'Syne', sans-serif"
-
       }
     },
   },

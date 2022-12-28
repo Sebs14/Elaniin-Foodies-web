@@ -14,19 +14,23 @@
 
 .custom-img {
   background-image: url("./assets/mask_hero.svg");
+  alt: "hamburger foodies";
   
 }
 
 .bg-text {
   background-image: url("./assets/bg_text.svg");
+  alt: "yellow text";
 }
 
 .bg-whois {
   background-image: url("./assets/food_art.svg");
+  alt: "who is foodies";
 }
 
 .bg-flow {
   background-image: url("./assets/vector.svg");
+  alt: "hamburger foodies";
 }
 
 .bg-selected {
