@@ -34,6 +34,9 @@ Start the server as dev
   npm run dev
 ```
 
+in order to make it work you need to config a .env file
+with the api URL : https://api.foodies.elaniin.dev
+
 
 ## Deployment
 
