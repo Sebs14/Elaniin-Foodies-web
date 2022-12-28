@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Titles from '../titles/Titles'
 import Paragraph from './../paragraph/Paragraph';
 
@@ -12,7 +12,7 @@ const DishCard = ({id, dish, image, description, price}) => {
       <div className='max-w-[330px] min-h-[264px] max-h-[264px]'>
         <img src={image} alt={dish} className=' group-hover:rounded-b-none object-cover h-full w-full rounded-xl'/>
       </div>    
-      <Titles titleText={dish} classes="font-syne font-bold text-2xl pt-4 pl-5 pr-10"  />
+      <Titles data-testid="name" titleText={dish} classes="font-syne font-bold text-2xl pt-4 pl-5 pr-10"  />
       <Paragraph pText={description} classes="font-noto text-sm pl-5 pr-10" />
       <div className='flex justify-between items-center pt-10 pb-5 px-5'>
         <div className='flex absolute right-2 bottom-7'>
