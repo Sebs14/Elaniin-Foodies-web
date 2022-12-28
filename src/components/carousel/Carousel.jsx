@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Titles from "../common/titles/Titles";
 import Paragraph from "../common/paragraph/Paragraph";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io"
 import LeftSide from "../../assets/left_side.jsx"
 import RightSide from "../../assets/right_side";
 import Ketchup from "../../assets/testimonials_bg_ketchup.png"
+
 
 const sliderData = [
   {
@@ -45,6 +46,8 @@ const Carousel = () => {
     setSlide(slide === 0 ? length - 1 : slide - 1)
   }
 
+
+
   return (
     <div>
       <div id="carousel" className="flex-col max-w-full px-4 py-16 relative flex justify-center items-center lg:h-[75vh] h-[65vh]  ">
@@ -55,7 +58,7 @@ const Carousel = () => {
             {index === slide && (
               <div className="flex flex-col justify-center w-3/4 z-10">
                 <Titles
-                  classes="text text--zipping font-drukTextWide text-center lg:text-4xl md:text-3xl text-xl"
+                  classes="font-drukTextWide text-center lg:text-4xl md:text-3xl text-xl"
                   titleText={item.title}
                 />
                 <Paragraph

@@ -19,7 +19,7 @@ const Titles = ({ titleText, classes}) => {
   
   return (
     <div>
-      <h1 className={classes} data-scroll="out" data-splitting="">
+      <h1 className={`${classes} text text--zipping`} data-scroll="out" data-splitting="">
         {titleText}
       </h1>
     </div>

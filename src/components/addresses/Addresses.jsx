@@ -88,7 +88,7 @@ const Addresses = () => {
           }
         </div>
       </div>
-      <img className='w-full md:block hidden  pt-2' src={MapImg}/>
+      <img className='w-full md:block hidden  pt-2' alt='El Salvador map' src={MapImg}/>
     </div>
   )
 }

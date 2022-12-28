@@ -3,6 +3,7 @@ import NumberButton from '../common/buttons/NumberButton'
 import DishCard from '../common/cards/DishCard';
 import Filters from '../common/filters/Filters'
 import Buttons from './../common/buttons/Buttons';
+import ButtonPrev from './../common/buttons/ButtonPrev';
 import getMyDish from './../../Services/Dishes';
 import getCategories from '../../Services/getCategory';
 import { useState, useEffect } from 'react';
@@ -108,11 +109,11 @@ const Dishes = () => {
         <div className='flex items-center justify-center space-x-4 pt-10'>
           {currentPage != undefined ? ( 
             page > 1 ? ( 
-              <Buttons classes={"relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group"} click={handlePagesPrevious} text={"anterior"}/>   
+              <ButtonPrev classes={"relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group"} click={handlePagesPrevious} text={"anterior"}/>   
               ) : ("")
             ): ""
           } 
-          <NumberButton page="1"/>  
+          <NumberButton page={page}/>  
           {currentPage != undefined ? (
             page < currentPage?.last_page ? ( 
               <Buttons classes={"relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group"} click={handlePagesNext} text={"siguiente"}/>   

@@ -16,10 +16,10 @@ const Footer = () => {
           </div>
           <div className="flex space-x-2" >
             <a href="https://www.apple.com/la/app-store/">
-              <img src={AppStore} />
+              <img src={AppStore} alt="appstore redirect"/>
             </a>
             <a href="https://play.google.com/store/games?hl=es&pli=1">
-              <img src={GooglePlay} />
+              <img src={GooglePlay} alt="google Playstore redirect"/>
             </a>
           </div>
         </div>
