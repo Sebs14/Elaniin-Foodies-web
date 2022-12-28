@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FoodiesLogo from "../../../assets/foodies.svg";
 import FoodiesWhite from "../../../assets/foodies_white.svg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ colorpage, colortext }) => {
   const [nav, setNav] = useState(false);
@@ -28,13 +29,13 @@ const Navbar = ({ colorpage, colortext }) => {
     >
       <div className="flex items-center lg:justify-start justify-between pb-2 lg:pl-28 lg:pt-14 md:pl-10 md:pt-8 pl-4 pt-12 md:pr-11 pr-5">
         {colortext === "white" ? (
-          <a href="/">
+          <Link to="/">
             <img src={FoodiesWhite} className="w-min-fit" />
-          </a>
+          </Link>
         ) : (
-          <a href="/">
+          <Link to="/">
             <img src={FoodiesLogo} className="w-min-fit" />
-          </a>
+          </Link>
         )}
         <ul className="lg:flex  hidden font-syne font-bold">
           <li className="pl-20">
@@ -51,9 +52,9 @@ const Navbar = ({ colorpage, colortext }) => {
             </a>
           </li>
           <li className="pl-10">
-            <a href="/menu" className={" hover:text-yellow-300 hover:underline"}>
+            <Link to="/menu" className={" hover:text-yellow-300 hover:underline"}>
               Menú
-            </a>
+            </Link>
           </li>
           <li className="pl-10">
             <a
@@ -80,13 +81,13 @@ const Navbar = ({ colorpage, colortext }) => {
           }
         >
           {colortext === "white" ? (
-            <a href="/" className="absolute top-12 left-4">
+            <Link to="/" className="absolute top-12 left-4">
               <img src={FoodiesWhite} className="w-min-fit" />
-            </a>
+            </Link>
           ) : (
-            <a href="/" className="absolute top-12 left-4">
+            <Link to="/" className="absolute top-12 left-4">
               <img src={FoodiesLogo} className="w-min-fit" />
-            </a>
+            </Link>
           )}
 
           <ul className="absolute top-36 left-4 font-syne font-bold text-left text-2xl">
@@ -97,7 +98,7 @@ const Navbar = ({ colorpage, colortext }) => {
               <a href="/#address">Restaurantes</a>
             </li>
             <li className="pb-12 hover:text-gray-500">
-              <a href="/menu">Menú</a>
+              <Link to="/menu">Menú</Link>
             </li>
             <li onClick={handleNav} className=" hover:text-gray-500">
               <a href="/#contact">Contáctenos</a>

@@ -42,7 +42,6 @@ const Addresses = () => {
     Address(type, input)
     const addresses = await Address(type, input)
     setAddress(addresses)
-    console.log("hol",address)
   }
   
   useEffect(()=> {

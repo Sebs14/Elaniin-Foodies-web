@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-
 import { AiOutlineFilter, AiOutlineClose } from "react-icons/ai";
-import Titles from './../titles/Titles';
 import Filter from "../../../assets/filter.svg";
 
 const Filters = ({setSelectedCategory , categories, }) => {
   const [nav, setNav] = useState(false);
   
   const handleNav = () => {
-    setNav(!nav);
-    console.log("hola2", e)
+    setNav(!nav);  
   };
   const handleCategoryClick = (e) => {
     setSelectedCategory(e.target.value) 
     setNav(!nav);
-    console.log("hola2", e)
   }
   return (
     <div className="flex justify-between items-center">
@@ -22,8 +18,8 @@ const Filters = ({setSelectedCategory , categories, }) => {
         <div>
           <ul className="md:flex items-center justify-center hidden font-syne text-lg font-bold">
           {categories.map( category => (
-            <li className="lg:pl-20">
-              <button onClick={handleCategoryClick} value={category.id} className=" hover:text-yellow-300 hover:underline ">
+            <li key={category.name} className="lg:pl-20">
+              <button key={category.name}  onClick={handleCategoryClick} value={category.id} className=" hover:text-yellow-300 hover:underline ">
                 {category.name}
               </button>
             </li>
@@ -48,8 +44,8 @@ const Filters = ({setSelectedCategory , categories, }) => {
         </div>
         <ul className="absolute top-36 left-4 font-syne font-bold text-left space-y-10 text-2xl">
         {categories.map( category => (
-          <li className="lg:pl-10">
-            <button onClick={handleCategoryClick} value={category.id} className=" hover:text-yellow-300 hover:underline ">
+          <li key={category.name} className="lg:pl-10">
+            <button key={category.name} onClick={handleCategoryClick} value={category.id} className=" hover:text-yellow-300 hover:underline ">
               {category.name}
             </button>
           </li>

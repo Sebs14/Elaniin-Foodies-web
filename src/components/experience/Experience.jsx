@@ -10,21 +10,26 @@ const Experience = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [isError, setIsError] = useState(false);
+  
+  const [showInvalidName, setShowInvalidName]= useState(false);
+  const [showInvalidEmail, setShowInvalidEmail]= useState(false);
+  const [showInvalidText, setShowInvalidText]= useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await postMyExperience(name, email, message);
-    console.log(response.status);
     if (response.status === 201) {
       setIsValid(true);
-      console.log(isValid);
       return;
     }
+    setIsError(false);
     setIsValid(false);
   };
 
   return (
-    <div id="contact" className="bg-black h-screen  justify-center ">
+    <div id="contact" className="bg-black h-screen md:h-[80vh] justify-center ">
       {isValid ? (
         <Thanks />
       ) : (
@@ -37,7 +42,7 @@ const Experience = () => {
             classes="font-noto text-center text-white text-lg pt-5 px-4"
             pText="No te pierdas nuestras grandes ofertas y recibe notificaciones de todos nuestros restaurantes top via e-mail."
           />
-          <form className=" flex lg:flex-row flex-col lg:space-y-0 lg:space-x-5 space-y-2 justify-center lg:px-0 md:px-16 px-4 pt-10">
+          <form onSubmit={handleSubmit} className=" flex lg:flex-row flex-col lg:space-y-0 lg:space-x-5 space-y-2 justify-center lg:px-0 md:px-16 px-4 pt-10">
             <div className="flex flex-col lg:w-1/4">
               <label className="font-noto text-sm text-white">
                 Nombre y Apellido
@@ -47,9 +52,20 @@ const Experience = () => {
                 id="name"
                 value={name}
                 placeholder="John Doe"
-                onChange={(e) => setName(e.target.value)}
-                className="bg-black font-noto border border-white text-white py-3 rounded px-5 focus:border-yellow-300 focus:text-yellow-300 "
+                onChange={(e) => {
+                  setName(e.target.value)
+                  setShowInvalidName(false)}}
+                onInvalid={(e) => {
+                  e.preventDefault();
+                  setShowInvalidName(true)
+                }}
+                required
+                className="bg-black peer font-noto border border-white text-white py-3 rounded px-5 focus:border-yellow-300 focus:text-yellow-300 "
               />
+              {showInvalidName ? (
+                <p className="text-red-700 font-noto">Ingresa un nombre</p>
+              ) : ("")
+              }
               <label className="font-noto text-sm text-white">
                 Correo electrónico
               </label>
@@ -58,9 +74,20 @@ const Experience = () => {
                 id="email"
                 placeholder="john.doe@elaniin.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                required
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setShowInvalidEmail(false)}}
+                onInvalid={(e) => {
+                  e.preventDefault();
+                  setShowInvalidEmail(true)
+                }}
                 className="bg-black font-noto border border-white text-white py-3 rounded px-5 focus:border-yellow-300 focus:text-yellow-300 "
               />
+              {showInvalidEmail ? (
+                <p className="text-red-700 font-noto">Ingresa un correo electronico valido</p>
+              ) : ("")
+              }
             </div>
             <div className="flex flex-col lg:w-1/4 ">
               <label className="font-noto text-sm text-white">Mensaje</label>
@@ -69,15 +96,27 @@ const Experience = () => {
                 id="message"
                 value={message}
                 rows="4"
+                required
                 placeholder="El día de ahora mi experiencia fue..."
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={(e) => {
+                  setMessage(e.target.value)
+                  setShowInvalidText(false)}}
+                onInvalid={(e) => {
+                  e.preventDefault();
+                  setShowInvalidText(true)
+                }}
                 className="bg-black  font-noto outline-none text-white py-3 rounded px-5 border-white focus:border-yellow-300 focus:text-yellow-300 "
               />
+              {showInvalidText ? (
+                <p className="text-red-700 font-noto">Deja tus comentarios</p>
+              ) : ("")
+              }
               <div className="flex lg:justify-end justify-center pt-3">
-                <Buttons click={handleSubmit} text="Enviar comentarios" />
+                <Buttons type="submit"  classes="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group" text="Enviar comentarios" />
               </div>
             </div>
           </form>
+          
         </div>
       )}
     </div>

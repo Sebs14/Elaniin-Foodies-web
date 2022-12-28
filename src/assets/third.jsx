@@ -2,7 +2,7 @@ import React from "react";
 
 const third = () => {
   return (
-    <div>
+    <div className="flex justify-center items-center  md:pr-2 lg:pt-5">
       <svg
         width="47"
         height="46"
