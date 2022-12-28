@@ -38,6 +38,9 @@ Start the server as dev
 ## Deployment
 
 For the Deployment of this project it has been used Vercel as host
+
+https://foodies-elaniin-foodies-web.vercel.app
+
 ![vercel](https://mms.businesswire.com/media/20210216006039/en/859393/23/vercel.jpg)
 
 
