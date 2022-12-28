@@ -17,52 +17,52 @@ const Dishes = () => {
       slug: 'todas',
     },
   ])
+  const [currentPage, setCurrentPage] = useState()
+  const [page, setPage] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState("")
-  // const [page, setPage] = useState(1)
   const [dish, setDish] = useState(1)
   const [input, setInput] = useState("")
-
   
+  const handlePagesNext = () => {
+    setPage((prev) => prev + 1)
+  }
   
-  // const pageOneClick = () =>{
-  //   setPage(1)
-  // }
-  // const pageTwoClick = () =>{
-  //   setPage(2)
-  // }
-  // const pageThreeClick = () =>{
-  //   setPage(3)
-  // }
-  // const pageFourClick = () =>{
-  //   setPage(4)
-  // }
+  const handlePagesPrevious = () => {
+    setPage((prev) => prev - 1)
+  }
+  
+  const fetchMeta = async () => {
+    const response = await getMyDish(page, selectedCategory, input)
+    setCurrentPage(response.meta)
+  }
   
   const fetchCategory = async () => {
     const response = await getCategories()
     setCategories([...categories,...response])
-    
-   
+  }
+  
+  const fetchDishes = async () => {
+    const response = await getMyDish(page, selectedCategory, input)
+    setDish(response.data)
   }
 
-  const fetchDishes = async () => {
-    const response = await getMyDish(1, selectedCategory, input)
-    setDish(response)
-    
-   
-  }
-  console.log("hola", dish)
   useEffect(() =>{
+    fetchMeta()
     fetchCategory()
   },[])
-
+  
   useEffect(() =>{
     fetchDishes()
-  },[selectedCategory])
+  },[selectedCategory, page])
   
+  console.log({page})
+  
+  console.log(currentPage?.last_page)
+
   return (
     <div className='h-full flex flex-col justify-center items-center'>
         <div className='flex lg:flex-row md:flex-col justify-center'>
-          <form className="lg:px-8  md:px-40  md:block md:w-full pl-4 py-6 w-11/12 ">
+          <form className="lg:px-8  md:px-40  md:block md:w-full pl-4 py-20 w-11/12 ">
             <label
               htmlFor="default-search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -92,10 +92,10 @@ const Dishes = () => {
           </form>
           <Filters key={categories.id} setSelectedCategory={setSelectedCategory} categories={categories} />
         </div>
-        <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1 pt-24 '>
+        <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 '>
           {dish.length > 0 ? (
             dish.map( dish => (
-              <DishCard key={dish.id} price={dish.price} dish={dish.title} image={dish.image} description={dish.description}  />
+              <DishCard key={dish.id} price={dish.price} dish={dish.title} image={dish.image} description={dish.description} />
             ))
           ): (
             <div className='flex justify-center items-center w-screen'>
@@ -106,8 +106,19 @@ const Dishes = () => {
           }
         </div>
         <div className='flex items-center justify-center space-x-4 pt-10'>
-          <NumberButton  page="1"/>
-          <Buttons text="siguiente"/>          
+          {currentPage != undefined ? ( 
+            page > 1 ? ( 
+              <Buttons classes={"relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group"} click={handlePagesPrevious} text={"anterior"}/>   
+              ) : ("")
+            ): ""
+          } 
+          <NumberButton page="1"/>  
+          {currentPage != undefined ? (
+            page < currentPage?.last_page ? ( 
+              <Buttons classes={"relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group"} click={handlePagesNext} text={"siguiente"}/>   
+              ) : ("")
+              ) : "" 
+          }     
         </div>
     </div>
   )
