@@ -1,11 +1,12 @@
 import React from "react";
 
-const Buttons = ({text, click}) => {
+const Buttons = ({text, click, classes, type}) => {
   return (
     <div>
       <button
+        type={type || "button"}
         onClick={click}
-        className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-yellow-300 group"
+        className={classes}
       >
         <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-yellow-900 group-hover:h-full"></span>
         <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
