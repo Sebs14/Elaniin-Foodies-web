@@ -72,7 +72,7 @@ const Carousel = () => {
           
         ))}
         
-        <img src={Ketchup} className="absolute -bottom-36 right-0 hidden lg:block z-0" />
+        <img src={Ketchup} alt="ketchup carousel" className="absolute -bottom-36 right-0 hidden lg:block z-0" />
         </div>
         <div className="flex justify-center relative bottom-10">
             <IoIosArrowBack onClick={nextSlide } size={50} className="pr-4 hover:text-yellow-300"/>
