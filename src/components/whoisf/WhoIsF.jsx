@@ -11,7 +11,7 @@ const WhoIsF = () => {
          <Titles titleText={"NUESTRO ARTE"} classes="text text--zipping font-drukTextWide text-[#FFD600] text-right"/>
         </div>
       </div>
-      <div className=" flex flex-col  lg:w-[40%] md:h-[565px] w-full bg-flow bg-no-repeat bg-center bg-cover">
+      <div className=" flex flex-col  lg:w-[40%]  w-full bg-flow bg-no-repeat bg-center bg-cover">
         <h2 className="font-syne font-bold text-2xl lg:pl-10 md:px-12 lg:pt-40 pt-16 pl-4">
           {" "}
           ¿Quién es Foodies?{" "}
