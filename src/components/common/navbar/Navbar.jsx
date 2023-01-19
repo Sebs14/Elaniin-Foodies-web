@@ -3,6 +3,7 @@ import FoodiesLogo from "../../../assets/foodies.svg";
 import FoodiesWhite from "../../../assets/foodies_white.svg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import getText from "../../../Services/getText";
 
 const Navbar = ({ colorpage, colortext }) => {
   const [nav, setNav] = useState(false);
@@ -10,8 +11,16 @@ const Navbar = ({ colorpage, colortext }) => {
   const handleNav = () => {
     setNav(!nav);
   };
+  const navbar = "navbars";
+  const [texts, setTexts] = useState(null);
+
+  const fetchText = async () => {
+    const text = await getText(navbar);
+    setTexts(text);
+  };
 
   useEffect(() => {
+    fetchText();
     const changeColor = () => {
       if (window.scrollY >= 90) {
         setColor(colorpage);
@@ -38,32 +47,21 @@ const Navbar = ({ colorpage, colortext }) => {
           </Link>
         )}
         <ul className="lg:flex  hidden font-syne font-bold">
-          <li className="pl-20">
-            <a href="/#whois" className=" hover:text-yellow-300 hover:underline ">
-              Acerca de
-            </a>
-          </li>
-          <li className="pl-10">
-            <a
-              href="/#address"
-              className=" hover:text-yellow-300 hover:underline"
-            >
-              Restaurantes
-            </a>
-          </li>
-          <li className="pl-10">
-            <Link to="/menu" className={" hover:text-yellow-300 hover:underline"}>
-              Menú
-            </Link>
-          </li>
-          <li className="pl-10">
-            <a
-              href="/#contact"
-              className=" hover:text-yellow-300  hover:underline"
-            >
-              Contáctanos
-            </a>
-          </li>
+          {texts?.length > 0 ? (
+            texts.map( texts => (
+              <li className="pl-20"
+              key={texts.id}>
+                <Link
+                  to={texts.attributes.link}
+                  className=" hover:text-yellow-300 hover:underline "
+                >
+                  {texts.attributes.text}
+                </Link>
+            </li>
+            ))
+          ): ('')
+
+          }
         </ul>
 
         {/* Mobile Button */}
